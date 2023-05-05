@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<html>
+
+	<head>
+		 <script
+          src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<title >быки и коровы</title>
+
+
+
+		<style type="text/css">
+   			TABLE {
+			border-collapse: collapse; /* Убираем двойные границы между ячейками */
+ 
+    			background: #dc0; /* Цвет фона таблицы */
+    			border: 5px double #000; /* Рамка вокруг таблицы */
+   			} 
+			TD{
+			border: 5px double #000; /* Рамка вокруг таблицы */
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<h1>быки и коровы</h1>
+
+
+
+
+		
+		<button onclick="ff();"> новая игра</button>
+
+
+
+
+	<table id="HistoryTable"
+           	class="table table-bordered
+		table-condensed table-striped">
+      		<thead>
+
+      			<tr>
+        			<th>вопрос</th>
+        			<th>быков</th>
+				<th>коров</th>
+
+      			</tr>
+			
+      		</thead>
+		<tbody></tbody>
+    	</table>
+
+
+
+		<form>
+  			<label for="lab">Введите четырехзначное число</label>
+  			<input type="text" id="lab" class="form-control"/>
+		</form>
+		
+
+		<button onclick="f();"> спросить</button>
+
+
+
+	
+
+	</body>
+
+</html>
+
+
+<script>	
+	var otvv=0;
+
+	function f(){
+		var q= $("#lab").val();
+		var b=0;
+		var c=0;
+		var otv=otvv+"";
+		for (var i=0; i<5; ++i){
+			if (otv[i]==q[i]){
+				b+=1;
+			}
+			else{
+				if (otv.includes(q[i])){
+					c+=1;
+				}
+			}
+		}
+		$("#HistoryTable tbody").append("<tr>" +
+        					"<td>" + q + "</td>" +
+        					"<td>" + b + "</td>" +
+						"<td>" + c + "</td>" +
+        				    "</tr>");
+		q="";
+		
+	}
+	function ff(){
+		var a = Math.floor( ( Math.random() *  9)+1); 
+		var b = Math.floor( ( Math.random() *  10)); 
+		while (b==a){b =Math.floor( ( Math.random() *  10)); }
+		var c = Math.floor( ( Math.random() *  10)); 
+		while (c==a || c==b){c =Math.floor( ( Math.random() *  10)); }
+		var d= Math.floor( ( Math.random() *  10)); ;
+		while (d==a || d==b || d==c){ d = Math.floor( ( Math.random() *  10)); }
+		otvv = 1000*a +100*b + 10*c + d;
+	}
+
+</script>
